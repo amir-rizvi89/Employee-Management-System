@@ -39,9 +39,4 @@ const Dashboard = () => {
   )
 }
 
-export default 
-
-// PORT=5000
-// MONGO_URI=mongodb+srv://rizviamir89:ueEx2Aijy6PmyYyo@employees.37qth6e.mongodb.net/employeeDB?retryWrites=true&w=majority&appName=Employ
-// JWT_SECRET=your_jwt_secret_key
-
+export default Dashboard
