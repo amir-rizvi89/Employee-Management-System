@@ -1,0 +1,40 @@
+# .gitignore
+
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Optional npm cache/debug folders
+.nyc_output/
+coverage/
+.cache/
+
+# Build output
+dist/
+build/
+tmp/
+
+# VSCode and IDE configs
+.vscode/
+.idea/
+
+# Debugging
+*.pid
+*.seed
+*.pid.lock
+
+# MongoDB dump files
+dump/
