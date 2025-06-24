@@ -12,7 +12,7 @@ export default function LoginPage() {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post('/auth/login', { email, password });
+      const res = await axios.post('/api/login', { email, password });
       dispatch(loginSuccess(res.data.token)); // store token in Redux
       navigate('/dashboard'); // redirect to dashboard
     } catch (err) {

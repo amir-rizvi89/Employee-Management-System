@@ -1,24 +1,30 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import Login from './pages/Login'
-import Dashboard from './pages/Dashboard'
-import EmpForm from './pages/EmpForm'
-import EditEmployeePage from './pages/EditEmployeePage'
-import { useSelector } from 'react-redux'
-import type { RootState } from './store'
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LoginPage from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import AddEmployee from './pages/AddEmployee';
+import EditEmployee from './pages/EditEmployee';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
-  const token = useSelector((s:RootState) => s.auth.token)
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path="/login" element={!token ? <Login/> : <Navigate to="/" />} />
-        <Route path="/" element={token ? <Dashboard/> : <Navigate to="/login" />} />
-        <Route path="/add" element={token ? <EmpForm/> : <Navigate to="/login" />} />
-        <Route path="/edit/:id" element={token ? <EditEmployeePage/> : <Navigate to="/login" />} />
+        <Route path="/" element={<LoginPage />} />
+
+        <Route path="/dashboard" element={
+          <PrivateRoute><Dashboard /></PrivateRoute>
+        } />
+
+        <Route path="/addEmployee" element={
+          <PrivateRoute><AddEmployee /></PrivateRoute>
+        } />
+
+        <Route path="/edit/:id" element={
+          <PrivateRoute><EditEmployee /></PrivateRoute>
+        } />
       </Routes>
-    </BrowserRouter>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;

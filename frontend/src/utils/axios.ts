@@ -1,8 +1,16 @@
-// src/utils/axios.ts
-import axios from 'axios'
+// src/services/axios.ts
+import axios from 'axios';
 
-const api = axios.create({
-  baseURL: 'http://localhost:5000',
-})
+const instance = axios.create({
+  baseURL: 'http://localhost:5000/',
+});
 
-export default api
+instance.interceptors.request.use(config => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`; // ✅ adds JWT
+  }
+  return config;
+});
+
+export default instance;

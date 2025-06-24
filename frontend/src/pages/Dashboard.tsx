@@ -13,12 +13,13 @@ const Dashboard = () => {
   useEffect(() => { dispatch(fetchEmps()) }, [dispatch])
   const handleLogout = () => {
     dispatch(logout());
+    console.log('Logged out. Token now:', localStorage.getItem('token'))
     nav('/');
   };
   return (
     <Container className="mt-4">
       <h2>Employees</h2>
-      <Button className="mb-3" onClick={() => nav('/add')}>Add Employee</Button>
+      <Button className="mb-3" onClick={() => nav('/addEmployee')}>Add Employee</Button>
       {loading ? <Spinner animation="border"/> :
       <Table bordered hover>
         <thead><tr><th>Name</th><th>Email</th><th>Designation</th><th>Salary</th><th>Actions</th></tr></thead>

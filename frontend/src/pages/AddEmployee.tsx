@@ -31,7 +31,7 @@ const EmpForm = () => {
     if (id) await dispatch(updateEmp({ _id:id, ...s, salary:+s.salary }))
     else await dispatch(createEmp({ ...s, salary:+s.salary }))
     dispatch(fetchEmps())
-    nav('/')
+    nav('/dashboard')
   }
 
   return (
