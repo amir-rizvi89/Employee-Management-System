@@ -3,7 +3,7 @@ import { Table, Button, Container, Spinner } from 'react-bootstrap'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { fetchEmps, deleteEmp } from '../slices/employeeSlice'
 import { useNavigate } from 'react-router-dom'
-
+import { logout } from '../slices/authSlice'
 const Dashboard = () => {
   const dispatch = useAppDispatch()
   const { list, loading } = useAppSelector(s => s.emp)
@@ -11,7 +11,10 @@ const Dashboard = () => {
   const nav = useNavigate()
 
   useEffect(() => { dispatch(fetchEmps()) }, [dispatch])
-
+  const handleLogout = () => {
+    dispatch(logout());
+    nav('/');
+  };
   return (
     <Container className="mt-4">
       <h2>Employees</h2>
@@ -31,8 +34,14 @@ const Dashboard = () => {
           ))}
         </tbody>
       </Table>}
+      <button onClick={handleLogout}>Logout</button>
     </Container>
   )
 }
 
-export default Dashboard
+export default 
+
+// PORT=5000
+// MONGO_URI=mongodb+srv://rizviamir89:ueEx2Aijy6PmyYyo@employees.37qth6e.mongodb.net/employeeDB?retryWrites=true&w=majority&appName=Employ
+// JWT_SECRET=your_jwt_secret_key
+
